@@ -7,17 +7,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-
-      restaurantCategoryId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'RestaurantCategories'
-          },
-          key: 'id'
-        }
-      },
-
       name: {
         allowNull: false,
         type: Sequelize.STRING
@@ -61,10 +50,57 @@ module.exports = {
       heroImage: {
         allowNull: true,
         type: Sequelize.STRING
+      },
+      status: {
+        allowNull: true,
+        type: Sequelize.ENUM,
+        values: [
+          'online',
+          'offline',
+          'closed',
+          'temporarily closed'
+        ]
+      },
+      restaurantCategoryId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'RestaurantCategories'
+          },
+          key: 'id'
+        }
+      },
+      productId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Products'
+          },
+          key: 'id'
+        }
+      },
+      orderId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Orders'
+          },
+          key: 'id'
+        }
+      },
+      userId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Users'
+          },
+          key: 'id'
+        }
       }
-
-      // TODO: Include the rest of the fields of the Restaurants table
-
     })
   },
   down: async (queryInterface, Sequelize) => {
