@@ -71,25 +71,15 @@ module.exports = {
           key: 'id'
         }
       },
-      productId: {
+      createdAt: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'Products'
-          },
-          key: 'id'
-        }
+        type: Sequelize.DATE,
+        defaultValue: new Date()
       },
-      orderId: {
+      updatedAt: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'Orders'
-          },
-          key: 'id'
-        }
+        type: Sequelize.DATE,
+        defaultValue: new Date()
       },
       userId: {
         allowNull: false,
